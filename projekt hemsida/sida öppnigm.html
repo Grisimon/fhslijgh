@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>Rolig hemsida :)</title>
+    </head>
+    <body style="font-size:100px;BACKGROUND:linear-gradient(rgb(255, 159, 33), rgb(122, 4, 4));">
+         <p>YOU HAVE</p>
+    
+    
+    
+    
+    
+    
+    
+    </body>
+
+    
+
+    <head>
+        <script src="https://randojs.com/1.0.0.js"></script>
+        <script>
+            function showRandomNumber(){
+                document.getElementById("myNumber").innerHTML = rando(1, 10);
+            }
+        </script>
+        <style>
+            #myNumber{
+                font-size:100px;
+                text-align:center;
+                margin:50px auto;
+                font-family:sans-serif;
+            }
+            .text{
+                position:absolute;
+                top: 400px;
+                right: 100px;
+                height:50px;
+                width:400px;
+            }
+
+        </style>
+    </head>
+    <body onload="showRandomNumber();">
+        <div id="myNumber"></div>
+        <div class="text">
+            SECONDS
+        </div>
+        <a href="sida1.html">info</a>
+    </body>
+</html>
