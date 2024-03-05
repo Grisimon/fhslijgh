@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+  <script src="script.js"></script>
+  <script src="style.css"></script>
+    <div>
+        <h2>PQ-formeln</h2>
+        <form id="pQForm">
+            <input type="number" id="a" placeholder="a">
+            <input type="number" id="b" placeholder="b">
+            <input type="number" id="c" placeholder="c">
+            <button type="button" onclick="calculatePQ()">Beräkna</button>
+        </form>
+        <div id="pQResult"></div>
+    </div>
+
+    <div>
+        <h2>Pythagoras sats</h2>
+        <form id="pythagorasForm">
+            <input type="number" id="katet1" placeholder="Katet 1">
+            <input type="number" id="katet2" placeholder="Katet 2">
+            <button type="button" onclick="calculatePythagoras()">Beräkna</button>
+        </form>
+        <div id="pythagorasResult"></div>
+    </div>
+
+    <div>
+        <h2>Funktions k- och m-värde</h2>
+        <form id="functionForm">
+            <input type="number" id="x1" placeholder="x1">
+            <input type="number" id="y1" placeholder="y1">
+            <input type="number" id="x2" placeholder="x2">
+            <input type="number" id="y2" placeholder="y2">
+            <button type="button" onclick="calculateFunction()">Beräkna</button>
+        </form>
+        <div id="functionResult"></div>
+    </div>
+
+</body>
+</html>
