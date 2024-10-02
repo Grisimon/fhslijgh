@@ -6,3 +6,5 @@ if (empty($_GET["name"])) {
     echo '<h1>hej', filter_input('input_get', 'name', FILTER_SANITIZE_SPECIAL_CHARS()),'<h1>';
     
 }
+
+echo "sjfhlkfj";
