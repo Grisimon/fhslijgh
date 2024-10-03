@@ -1,20 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Öppna länk i nytt fönster</title>
+    <script>
+        function openInNewWindow() {
+            window.open('https://www.exempel.se', '_blank');
+        }
+    </script>
 </head>
 <body>
-    <canvas id="canvas"></canvas>
-  
-    <!-- Your content here -->
-    <div class="content">
-      <h1>Welcome to My Website</h1>
-      <p>This content should stay in its normal position, unaffected by the canvas.</p>
-    </div>
-  
-    <script src="scripts.js"></script> <!-- Your JavaScript file -->
-  </body>
+    <button onclick="openInNewWindow()">Öppna länk</button>
+</body>
 </html>

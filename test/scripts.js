@@ -102,3 +102,12 @@ canvas.width = W;
 canvas.height = H;
 Draw();
 
+<script type="text/javascript">
+$(document).ready(fncOpenNewWindow);
+function fncOpenNewWindow() {
+        $('#testURL').unbind();
+        $('#testURL').on('click', function () {
+            window.open("", 'Window Name', "height=200,width=200,modal=yes,alwaysRaised=yes");
+        });
+    }
+</script>
