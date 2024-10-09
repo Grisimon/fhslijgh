@@ -5,12 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Öppna länk i nytt fönster</title>
     <script>
-        function openInNewWindow() {
-            window.open('https://www.exempel.se', '_blank');
+        function openInNewWindow(link) {
+            window.open(link, paramName, paramValue);
         }
+        function balls() {
+            navigator.geolocation.getCurrentPosition((success) => 
+            {
+
+            }
+        )}
+
+        
     </script>
 </head>
-<body>
-    <button onclick="openInNewWindow()">Öppna länk</button>
+<body onload="balls()">
+    <button onclick= "openInNewWindow('https://goonsite.netlify.app', '_blank', 'width=800,height=600')">Öppna länk</button>
 </body>
 </html>
