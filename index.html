@@ -4,11 +4,15 @@
       
         <style>
           
-            img {
-              display: block;
-              margin-left: auto;
-              margin-right: auto;
-            }
+          img{
+            position: fixed; /* Keeps the image fixed in the viewport */
+            right: 0;        /* Aligns the image to the right of the screen */
+            top: 50%;        /* Vertically centers the image */
+            transform: translateY(-50%); /* Adjusts the position to center */
+            max-width: 200px; /* Limits the maximum width of the image */
+            margin-right: 10px;
+        }
+
           </style>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +23,61 @@
           function openNewWindow() {
               window.open('https://goonsite.netlify.app/delar%20till%20dator.html/index.html', '_blank', 'width=800,height=600');
           }
-      </script>  
+      
+    
+          function openNewWindow1() {
+            window.open('https://goonsite.netlify.app/tagga_till_en_text-master/', '_blank', 'width=800,height=600');
+          }
+      
+    
+        function openNewWindow2() {
+          window.open('https://goonsite.netlify.app/projekt%20hemsida/sida%20%C3%B6ppnigm.html', '_blank', 'width=800,height=600');
+        }
+      
+    
+        function openNewWindow3() {
+          window.open('https://goonsite.netlify.app/wikipedia-Projekt/kod%20eller%20n%C3%A5got.html', '_blank', 'width=800,height=600');
+        }
+      
+    
+        function openNewWindow4() {
+          window.open('https://goonsite.netlify.app/to%20do%20list/index.html', '_blank', 'width=800,height=600');
+        }
+      
+    
+        function openNewWindow5() {
+          window.open('https://goonsite.netlify.app/webbutveckling1/htmlgrunder', '_blank', 'width=800,height=600');
+        }
+      
+    
+        function openNewWindow6() {
+          window.open('https://goonsite.netlify.app/webbutveckling2/', '_blank', 'width=800,height=600');
+        }
+      
+
+    
+        function openNewWindow7() {
+          window.open('https://goonsite.netlify.app/webbhistoria/', '_blank', 'width=800,height=600');
+        }
+      
+
+    
+        function openNewWindow8() {
+          window.open('https://goonsite.netlify.app/mattesidan-master/', '_blank', 'width=800,height=600');
+        }
+      
+
+    
+        function openNewWindow9() {
+          window.open('https://goonsite.netlify.app/sound%20popup%20test/sound%20och%20autoplay.html', '_blank', 'width=800,height=600');
+        }
+      
+
+    
+        function openNewWindow0() {
+          window.open('https://goonsite.netlify.app/projekt%20fin%20hemsida/index.html', '_blank', 'width=800,height=600');
+        }
+      </script>      
     </head>
 
     <body style="background: rgb(238,174,202);
@@ -48,18 +106,17 @@
     <script src="popup.js"></script>  
         
         <ul>
-          <button onclick="openNewWindow()">Datordelar</button>
-            <li> <a href="projekt hemsida/sida öppnigm.html">projekt hemsida</a></li>
-            <li><a href="Tagga_till_en_text-master/index.html">Tagga_till_en_text-master</a></li>
-            <li><a href="webbutveckling1/htmlgrunder.html">webbutveckling1</a></li>
-            <li><a href="webbutveckling2/index.html">webbutveckling2</a></li>
-            <li><a href="wikipedia-Projekt/kod eller något.html">wikipedia-Projekt</a></li>
-            <li> <a href="Webbhistoria/index.html">webbhistoria</a></li>
-            <li> <a href="to do list/index.html">to do list</a></li>
-            <li> <a href="mattesidan-master/index.html">mattesidan</a></li>
-            <li> <a href="sound popup test\sound och autoplay.html">popup test</a></li>
-            <li> <a href="projekt fin hemsida\index.html">fin hemsida blogg</a></li>
-
+            <li><button onclick="openNewWindow()">Datordelar</button></li>
+            <li><button onclick="openNewWindow1()">tagga till en text</button></li>
+            <li><button onclick="openNewWindow2()">projekt hemsida</button></li>
+            <li><button onclick="openNewWindow3()">wikipedia projekt</button></li>
+            <li><button onclick="openNewWindow4()">to do list</button></li>
+            <li><button onclick="openNewWindow5()">webbutveckling1</button></li>
+            <li><button onclick="openNewWindow6()">webbutveckling2</button></li>
+            <li><button onclick="openNewWindow7()">webbhistoria</button></li>
+            <li><button onclick="openNewWindow8()">mattesidan</button></li>
+            <li><button onclick="openNewWindow9()">popup</button></li>
+            <li><button onclick="openNewWindow0()">fin hemsida blogg</button></li>
         </ul>
         
         <IMG SRC="cat.gif" style="max-width: 200px; margin-right: 10px;"> 
