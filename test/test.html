@@ -1,24 +1,80 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Öppna länk i nytt fönster</title>
-    <script>
-        function openInNewWindow(link) {
-            window.open(link, paramName, paramValue);
-        }
-        function balls() {
-            navigator.geolocation.getCurrentPosition((success) => 
-            {
-
-            }
-        )}
-
-        
-    </script>
+    <title>Permission Request Demo</title>
 </head>
-<body onload="balls()">
-    <button onclick= "openInNewWindow('https://goonsite.netlify.app', '_blank', 'width=800,height=600')">Öppna länk</button>
+<body>
+    <button id="requestPermissions">Request Permissions</button>
+    <video autoplay></video> <!-- Video element for showing camera feed -->
+    <button id="notifyButton">Enable Notifications</button>
+    <button id="showNotificationButton">Show Notification</button>    
+    <script>
+        document.getElementById('requestPermissions').addEventListener('click', () => {
+            // Request geolocation permission
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        console.log("Location accessed:", position);
+                    },
+                    (error) => {
+                        console.error("Error accessing location:", error);
+                    }
+                );
+            }
+
+            // Request notification permission
+            if ("Notification" in window) {
+                Notification.requestPermission().then((permission) => {
+                    if (permission === "granted") {
+                        new Notification("Permission granted!", { body: "You will now receive notifications." });
+                    }
+                });
+            }
+
+            // Request camera and microphone permission
+            navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+                .then((stream) => {
+                    console.log("Access granted to camera and microphone.");
+                    const video = document.querySelector('video');
+                    if (video) {
+                        video.srcObject = stream;
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error accessing media devices:", error);
+                });
+        });
+
+        // Function to show a notification
+        function sendNotification(title, body, icon) {
+            if (Notification.permission === "granted") {
+                new Notification(title, {
+                    body: body,
+                    icon: icon
+                });
+            } else if (Notification.permission !== "denied") {
+                Notification.requestPermission().then((permission) => {
+                    if (permission === "granted") {
+                        new Notification(title, {
+                            body: body,
+                            icon: icon
+                        });
+                    } else {
+                        console.log("Notification permission denied.");
+                    }
+                });
+            } else {
+                console.log("Notification permission was previously denied.");
+            }
+        }
+
+        // Set up the notification button
+        document.getElementById('showNotificationButton').addEventListener('click', () => {
+            sendNotification("Hello!", "This is a test notification.", "https://via.placeholder.com/100");
+        });
+
+    </script>
 </body>
 </html>

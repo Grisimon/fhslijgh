@@ -77,7 +77,12 @@
         function openNewWindow0() {
           window.open('https://goonsite.netlify.app/projekt%20fin%20hemsida/index.html', '_blank', 'width=800,height=600');
         }
-      </script>      
+
+        function openNewWindow01() {
+          window.open('https://goonsite.netlify.app/projekt%20fin%20hemsida/index.html', '_blank', 'width=800,height=600');
+        }
+
+        </script>      
     </head>
 
     <body style="background: rgb(238,174,202);
@@ -100,12 +105,15 @@
         <div class="popup-content">
             <p style="color: whitesmoke;">Tryck för musik :3</p>
             <button id="playButton">Play Music</button>
-        </div>
+          </div>
     </div>
 
     <script src="popup.js"></script>  
-        
-        <ul>
+        <div>
+          <a href="test/test.html"></a>
+          <label style = margin-right:40px; for="volumeSlider"></label>
+          <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.5">
+          <ul>
             <li><button onclick="openNewWindow()">Datordelar</button></li>
             <li><button onclick="openNewWindow1()">tagga till en text</button></li>
             <li><button onclick="openNewWindow2()">projekt hemsida</button></li>
@@ -117,8 +125,10 @@
             <li><button onclick="openNewWindow8()">mattesidan</button></li>
             <li><button onclick="openNewWindow9()">popup</button></li>
             <li><button onclick="openNewWindow0()">fin hemsida blogg</button></li>
-        </ul>
-        
+            <li><button onclick="openNewWindow01()">Test sidan(var försiktig)</button></li>
+            
+          </ul>
+        </div>
         <IMG SRC="cat.gif" style="max-width: 200px; margin-right: 10px;"> 
         
     </body>
