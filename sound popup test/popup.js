@@ -13,6 +13,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
             popup.style.display = 'none'; // Hide the popup after playing music
         }).catch((error) => {
             console.log('Failed to play music:', error);
+            audio.onended = function() {
+                this.play
+            }
+            {
+                audio.play;
+            }
         });
     });
 });

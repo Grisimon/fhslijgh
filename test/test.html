@@ -6,10 +6,18 @@
     <title>Permission Request Demo</title>
 </head>
 <body>
+    
+
+    <style>
+                body {
+            cursor: url('cursor.png'), auto;
+        }
+    </style>
     <button id="requestPermissions">Request Permissions</button>
     <video autoplay></video> <!-- Video element for showing camera feed -->
     <button id="notifyButton">Enable Notifications</button>
     <button id="showNotificationButton">Show Notification</button>    
+
     <script>
         document.getElementById('requestPermissions').addEventListener('click', () => {
             // Request geolocation permission

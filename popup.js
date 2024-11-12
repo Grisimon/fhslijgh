@@ -17,6 +17,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }).catch((error) => {
             console.log('Failed to play music:', error);
         });
+        audio.onended = function() {
+            this.play
+        }
+        {
+            audio.play;
+        }
     });
 
     audio.volume = volumeSlider.value;
