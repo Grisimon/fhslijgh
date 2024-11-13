@@ -8,16 +8,46 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header>
+        <div class="wrapper">
+
+        <ul>
+        <li> 1
+            <ul>
+                <li><a href='' style="color: #fff; text-decoration: none;"></a></li>
+                <li><a href='' style="color: #fff; text-decoration: none;"></a></li>
+            </ul>
+        </li>
+        <li>2
+            <ul>
+                <li><a href='' style="color: #fff; text-decoration: none;"></a></li>
+            </ul>
+        </li>
+        <li>3
+            <ul>
+                <li><a href='' style="color: #fff; text-decoration: none;"></a></li>
+                <li><a href='' style="color: #fff; text-decoration: none;"></a></li>
+                <li><a href="" style="color: #fff; text-decoration: none;"></a></li>
+            </ul>  
+        <li>4
+            <ul>
+                <li><a href='' style="color: #fff; text-decoration: none;"></a></li>
+                <li><a href='' style="color: #fff; text-decoration: none;"></a></li>
+            </ul>
+        </li>
+        <li> 5
+            <ul>
+                <li><a href='' style="color: #fff; text-decoration: none;"></a></li>
+            </ul>
+        
+        </li>
+        <li>6</li>
+        
+        </ul>
+            </div>
+    </header>
+
         <div class=".container" >
-            <h1>Min Blogg</h1>
-            <nav>
-                <ul>
-                    <li><a href="#"></a></li>
-                    <li><a href="#"></a></li>
-                    <li><a href="#">Blogg</a></li>
-                    <li><a href="#"></a></li>
-                </ul>
-            </nav>
         </div>
     </header>
 
@@ -28,7 +58,6 @@
                 <p>Publicerad den 10 september 2024</p>
                 <img src="https://via.placeholder.com/400x200" alt="Blogg Bild">
                 <p>Detta är en exempeltext för ditt blogginlägg. Här kan du skriva om vad du vill dela med dina läsare.</p>
-                <a href="#" class="read-more">Läs mer...</a>
             </article>
 
             <article class="post">
@@ -36,8 +65,17 @@
                 <p>Publicerad den 3 september 2024</p>
                 <img src="https://via.placeholder.com/400x200" alt="Blogg Bild">
                 <p>Detta är en exempeltext för ditt blogginlägg. Fortsätt att dela dina tankar och idéer här.</p>
-                <a href="#" class="read-more">Läs mer...</a>
             </article>
+        </div>
+        <div>
+            <form id="blogPostForm">
+                <h2>Add a New Blog Post</h2>
+                <input type="text" id="title" placeholder="Blog Post Title" required><br>
+                <input type="date" id="date" required><br>
+                <input type="text" id="imageUrl" placeholder="Image URL" required><br>
+                <textarea id="content" placeholder="Write your blog content here..." required></textarea><br>
+                <button type="submit">Add Blog Post</button>
+            </form>
         </div>
     </main>
 
@@ -46,5 +84,8 @@
             <p>&copy; 2024 Simon Carles©. Alla rättigheter förbehållna.</p>
         </div>
     </footer>
+
+
+            
 </body>
 </html>

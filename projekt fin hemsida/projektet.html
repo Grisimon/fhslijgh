@@ -4,48 +4,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horisontell meny</title>
     <link rel="stylesheet" href="styles.css">
+    <title>Blog Post Creator</title>
 </head>
 <body>
-    <div class="wrapper">
+    <main>
+        <div class="container">
+            <!-- Existing blog posts go here -->
+        </div>
+    </main>
 
-<ul>
-<li>Moment 1
-    <ul>
-        <li><a href='/moment1/moment1' style="color: #fff; text-decoration: none;">Moment 1a</a></li>
-        <li><a href='/moment1/moment1b' style="color: #fff; text-decoration: none;">Moment 1b</a></li>
-    </ul>
-</li>
-<li> Moment 2
-    <ul>
-        <li><a href='/moment2/moment2' style="color: #fff; text-decoration: none;">Moment 2a</a></li>
-    </ul>
-</li>
-<li>Moment3
-    <ul>
-        <li><a href='/moment3/moment3' style="color: #fff; text-decoration: none;">Moment 3a</a></li>
-        <li><a href='/moment3b/moment3b' style="color: #fff; text-decoration: none;">Moment 3b</a></li>
-        <li><a href="/moment3c/moment3c.html" style="color: #fff; text-decoration: none;">Moment 3c</a></li>
-    </ul>  
-<li>Moment 4
-    <ul>
-        <li><a href='/moment4/moment4' style="color: #fff; text-decoration: none;">Moment 4a</a></li>
-        <li><a href='/moment4/moment4b' style="color: #fff; text-decoration: none;"></a> Moment 4b</li>
-    </ul>
-</li>
-<li>Moment 5
-    <ul>
-        <li><a href='/moment5/moment5' style="color: #fff; text-decoration: none;"></a> Moment 5a</li>
-        <li>moment 5b</li>
-    </ul>
+    <!-- Form to add new blog post -->
+    <form id="blogPostForm">
+        <article class="post">
+            <h2>Add a New Blog Post</h2>
+            <input type="text" id="title" placeholder="Blog Post Title" required><br>
+            <input type="date" id="date" required><br>
+            <input type="text" id="imageUrl" placeholder="Image URL" required><br>
+            <textarea id="content" placeholder="Write your blog content here..." required></textarea><br>
+            <button type="submit">Add Blog Post</button>
+        </article>
+    </form>
 
-</li>
-<li>Moment 6</li>
+    <script>
+        document.getElementById('blogPostForm').addEventListener('submit', function(event) {
+            event.preventDefault();
 
-</ul>
-    </div>
-   
-    
+            // Retrieve input values
+            const title = document.getElementById('title').value;
+            const date = document.getElementById('date').value;
+            const imageUrl = document.getElementById('imageUrl').value;
+            const content = document.getElementById('content').value;
+
+            // Create a new article element
+            const newPost = document.createElement('article');
+            newPost.classList.add('post');
+
+            // Construct inner HTML
+            newPost.innerHTML = `
+                <h2>${title}</h2>
+                <p>Publicerad den ${new Date(date).toLocaleDateString('sv-SE')}</p>
+                <img src="${imageUrl}" alt="Blogg Bild">
+                <p>${content}</p>
+            `;
+
+            // Append the new post to the container
+            document.querySelector('.container').appendChild(newPost);
+
+            // Clear form inputs
+            document.getElementById('blogPostForm').reset();
+        });
+    </script>
 </body>
 </html>
