@@ -1,6 +1,14 @@
 
 body {
     font-family: Arial, sans-serif;
+    height: 100%;
+    width: 100%;
+    margin: 0;  
+    background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+}
+
+html body {
+  height: 100%;
 }
 
 .popup {
@@ -27,7 +35,7 @@ body {
 }
 
 button {
-    padding: 10px 20px;
+    padding: 7px 15px;
     font-size: 16px;
     cursor: pointer;
     background: rgb(238,174,202);background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
@@ -57,3 +65,22 @@ html, body {
     padding: 20px;
     text-align: center;
   }
+
+  img {
+    position: fixed; 
+    top: 50%; 
+    right: 10px; 
+    transform: translateY(-50%);
+    max-width: 200px;
+  }
+
+  .container {
+    overflow-y: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+.container::-webkit-scrollbar { /* WebKit */
+    width: 0;
+    height: 0;
+}
+
