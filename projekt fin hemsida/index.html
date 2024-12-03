@@ -4,78 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Min Blogg</title>
-    
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        /* Close button */
+        .close-popup {
+            background: red;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .container .post {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="wrapper">
-
-        <ul>
-        <li> 1
-            <ul>
-                <li><a href='' style="color: #fff; text-decoration: none;"></a></li>
-                <li><a href='' style="color: #fff; text-decoration: none;"></a></li>
-            </ul>
-        </li>
-        <li>2
-            <ul>
-                <li><a href='' style="color: #fff; text-decoration: none;"></a></li>
-            </ul>
-        </li>
-        <li>3
-            <ul>
-                <li><a href='' style="color: #fff; text-decoration: none;"></a></li>
-                <li><a href='' style="color: #fff; text-decoration: none;"></a></li>
-                <li><a href="" style="color: #fff; text-decoration: none;"></a></li>
-            </ul>  
-        <li>4
-            <ul>
-                <li><a href='' style="color: #fff; text-decoration: none;"></a></li>
-                <li><a href='' style="color: #fff; text-decoration: none;"></a></li>
-            </ul>
-        </li>
-        <li> 5
-            <ul>
-                <li><a href='' style="color: #fff; text-decoration: none;"></a></li>
-            </ul>
-        
-        </li>
-        <li>6</li>
-        
-        </ul>
-            </div>
-    </header>
-
-        <div class=".container" >
-        </div>
-    </header>
+    <button style="background: #aeeeea;" id="openPopup">Add New Blog Post</button>
 
     <main>
         <div class="container">
-            <article class="post">
-                <h2>Bloggpost Titel</h2>
-                <p>Publicerad den 10 september 2024</p>
-                <img src="https://via.placeholder.com/400x200" alt="Blogg Bild">
-                <p>Detta är en exempeltext för ditt blogginlägg. Här kan du skriva om vad du vill dela med dina läsare.</p>
-            </article>
-
-            <article class="post">
-                <h2>En annan Bloggpost</h2>
-                <p>Publicerad den 3 september 2024</p>
-                <img src="https://via.placeholder.com/400x200" alt="Blogg Bild">
-                <p>Detta är en exempeltext för ditt blogginlägg. Fortsätt att dela dina tankar och idéer här.</p>
-            </article>
         </div>
-        <div>
-            <form id="blogPostForm">
-                <h2>Add a New Blog Post</h2>
-                <input type="text" id="title" placeholder="Blog Post Title" required><br>
-                <input type="date" id="date" required><br>
-                <input type="text" id="imageUrl" placeholder="Image URL" required><br>
-                <textarea id="content" placeholder="Write your blog content here..." required></textarea><br>
-                <button type="submit">Add Blog Post</button>
-            </form>
+
+        <div class="popup-overlay" id="popup">
+            <div class="popup-content">
+                <button class="close-popup" id="closePopup">&times;</button>
+                <form id="blogPostForm">
+                    <h2>Add a New Blog Post</h2>
+                    <input type="text" id="title" placeholder="Blog Post Title" required><br>
+                    <input type="date" id="date" required><br>
+                    <input type="text" id="imageUrl" placeholder="Image URL"><br>
+                    <textarea id="content" placeholder="Write your blog content here..." required></textarea><br>
+                    <button type="submit">Add Blog Post</button>
+                </form>
+            </div>
         </div>
     </main>
 
@@ -85,7 +81,60 @@
         </div>
     </footer>
 
+    <script>
+        // Get references to the popup and buttons
+        const popup = document.getElementById('popup');
+        const openPopupButton = document.getElementById('openPopup');
+        const closePopupButton = document.getElementById('closePopup');
+        const form = document.getElementById('blogPostForm');
+        const container = document.querySelector('.container');
 
-            
+        // Show the popup when clicking the "Add New Blog Post" button
+        openPopupButton.addEventListener('click', () => {
+            popup.style.display = 'flex'; // Show the popup
+        });
+
+        // Close the popup when clicking the close button
+        closePopupButton.addEventListener('click', () => {
+            popup.style.display = 'none'; // Hide the popup
+        });
+
+        // Close the popup if clicking outside the popup content
+        popup.addEventListener('click', (event) => {
+            if (event.target === popup) {
+                popup.style.display = 'none'; // Hide the popup
+            }
+        });
+
+        // Handle form submission
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission behavior
+
+            // Retrieve input values
+            const title = document.getElementById('title').value;
+            const date = document.getElementById('date').value;
+            const imageUrl = document.getElementById('imageUrl').value;
+            const content = document.getElementById('content').value;
+
+            // Create a new article element
+            const newPost = document.createElement('article');
+            newPost.classList.add('post');
+
+            // Construct inner HTML for the new post
+            newPost.innerHTML = `
+                <h2>${title}</h2>
+                <p>Publicerad den ${new Date(date).toLocaleDateString('sv-SE')}</p>
+                ${imageUrl ? `<img src="${imageUrl}" alt="Blogg Bild">` : ''}
+                <p>${content}</p>
+            `;
+
+            // Append the new post to the container
+            container.appendChild(newPost);
+
+            // Hide the popup and reset the form
+            popup.style.display = 'none';
+            form.reset();
+        });
+    </script>
 </body>
 </html>

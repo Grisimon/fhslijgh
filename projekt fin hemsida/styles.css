@@ -7,10 +7,50 @@
     background-color: #024950;
     color: #afdde5;
 }*/
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Popup container */
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+}
+
+/* Close button */
+.close-popup {
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
 html {
     margin: 0;
     padding: 0;
     height: 100%;
+    background: linear-gradient(#003135,#024950, #964734);;
 }
 
 .container {
@@ -52,7 +92,7 @@ nav ul li a {
 
 main {
     padding: 20px 0;
-    background: linear-gradient(#003135,#024950, #964734);
+    background: #024950;
 }
 
 .post {
@@ -85,40 +125,24 @@ main {
 }
 
 footer {
-    background: #333;
+    background-color: #333;
     color: #fff;
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 20px;
+    text-align: bottom;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
-footer a {
-    color: #0779e4;
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
 /*#003135 #024950 #964734 #0FA4AF #AFDDE5*/
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
     font-family: 'Montserrat', sans-serif;
 }
-body{
-    background-image: url(nature.jpg);
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    height:100vh;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-}
+
 .wrapper
 {
     width: 1020px;
