@@ -19,5 +19,8 @@ html, body {
     position: relative; /* Ensure content is above the canvas */
     z-index: 1; /* Content is above the canvas */
   }
-  
+  .dumbass{
+    background-color: black;
+    z-index: 2;
+  }
   

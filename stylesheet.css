@@ -94,3 +94,12 @@ html, body {
   font-weight: normal;
   font-style: normal;
 }
+html
+  {
+    cursor:url("soy.png"), pointer;
+    cursor:url("soy.png"),  auto;
+  }
+
+  .container::-webkit-scrollbar, .container, img, #canvas, .popup-content,a, .popup, button, input, textarea, select, body {
+    cursor:url("soy.png"),  auto;
+  }
