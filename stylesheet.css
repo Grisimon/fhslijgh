@@ -90,7 +90,7 @@ html, body {
 
 @font-face {
   font-family: 'Monocraft'; /* The custom font name you'll use */
-  src: url('fonts/monocraft.ttc') format('truetype'); /* Using TrueType Collection */
+  src: url('monocraft.ttc') format('truetype'); /* Using TrueType Collection */
   font-weight: normal;
   font-style: normal;
 }
