@@ -94,8 +94,7 @@ html, body {
   font-weight: normal;
   font-style: normal;
 }
-html
-  {
+html{
     cursor:url("soy.png"), pointer;
     cursor:url("soy.png"),  auto;
   }
