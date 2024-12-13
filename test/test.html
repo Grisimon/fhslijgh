@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="grid-container" style="z-index: -999;">
+    <div id="grid-container" style="z-index: -999;width: 100%;">
         <pre id="grid">
             <div id="grid-bg"></div>
             <div id="grid-content"></div>
@@ -53,10 +53,12 @@ pre#grid {
 }
     </style>
     <div class="dumbass">
-    <button id="requestPermissions">Request Permissions</button>
-    <video autoplay></video> <!-- Video element for showing camera feed -->
-    <button id="notifyButton">Enable Notifications</button>
-    <button id="showNotificationButton">Show Notification</button>    
+        <div style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;background-color: rgba(0, 0, 0, 0.5);z-index: 10;display: flex;align-items: center;justify-content: center;color: white;font-size: 20px;position: fixed;">
+            <button id="requestPermissions">Request Permissions</button>
+            <video autoplay></video> <!-- Video element for showing camera feed -->
+            <button id="notifyButton">Enable Notifications</button>
+            <button id="showNotificationButton">Show Notification</button>    
+        </div>
 
     <script>
         document.getElementById('requestPermissions').addEventListener('click', () => {
@@ -120,7 +122,7 @@ pre#grid {
 
         // Set up the notification button
         document.getElementById('showNotificationButton').addEventListener('click', () => {
-            sendNotification("Hello!", "This is a test notification.", "https://via.placeholder.com/100");
+            sendNotification("Hello!", ":3.", "https://via.placeholder.com/100");
         });
         const gridElem = document.querySelector('#grid');
 const gridElemBg = document.querySelector('#grid-bg');
