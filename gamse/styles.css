@@ -9,4 +9,32 @@
     border-width: 5px;
     
 }
+button {
+    padding: 10px 20px;
+    border-color: #ffff;
+    border-width: 2px;
+    font-size: 16px;
+    color:  #ffff;
+    cursor: pointer;
+    background: rgb(238,174,202);background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    font-family: 'Monocraft', 'Fira Code', Consolas, 'Courier New', monospace;
+}
 
+body {
+    background: rgb(238,174,202);background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    background-size: 400% 400%;
+	animation: gradient 20s ease infinite;
+	height: 100vh;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
