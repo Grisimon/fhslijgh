@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimized Document</title>
+    <link rel="stylesheet" href="baba.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        /* General Body Styling */
+        body {
+            margin: 0;
+            height: 2000px;
+            overflow-x: hidden;
+            box-sizing: border-box;
+            background: #222;
+            font-family: 'Press Start 2P', monospace;
+        }
+
+        /* Header and Footer (if needed later) */
+        header, footer {
+            height: 50px; /* Example size */
+            background-color: #2d2d33;
+        }
+
+        /* Overlay Div */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .overlay h1 {
+            margin: 0;
+            background-color: #2d2d33;
+            padding: 10px 20px;
+        }
+
+        /* Grid Container */
+        #grid-container {
+            width: 100%;
+            height: 2000px;
+            overflow-x: auto;
+            z-index: 2;
+            margin: 3px;
+            height: calc(100vh - 6px);
+            width: calc(100vw - 6px);
+            display: table;
+            background: #222;
+        }
+
+        pre#grid {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            font-size: 8px;
+            display: table-cell;
+            color: #FFF;
+            position: relative;
+            background: #000;
+        }
+
+        /* Background and Content layers within Grid */
+        #grid-bg, #grid-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Overlay Section -->
+    <div class="overlay">
+        <h1>wawawawwa</h1>
+    </div>
+
+    <!-- Grid Section -->
+    <div id="grid-container">
+        <pre id="grid">
+            <div id="grid-bg"></div>
+            <div id="grid-content"></div>
+        </pre>
+    </div>
+
+    <script>
+        // Cache DOM elements
+        const gridElem = document.querySelector('#grid');
+        const gridElemBg = document.querySelector('#grid-bg');
+        const gridElemContent = document.querySelector('#grid-content');
+        const gridFontSize = parseInt(getComputedStyle(gridElem).fontSize, 10);
+
+        // Variables
+        let colCount = 0, rowCount = 0, pixelCount = 0;
+        const charRangeStart = 33, charRangeEnd = 126, charRangeMax = charRangeEnd - charRangeStart;
+        let pixels = [];
+
+        // Update Grid Size
+        function updateSize() {
+            gridElemContent.innerHTML = "";
+            colCount = Math.floor(gridElem.clientWidth / gridFontSize);
+            rowCount = Math.floor(gridElem.clientHeight / gridFontSize);
+            pixelCount = colCount * rowCount;
+            pixels = Array(pixelCount).fill(String.fromCharCode(charRangeStart));
+            render();
+        }
+
+        // Generate Pixels
+        function generate(ticks) {
+            const cx = Math.floor(colCount / 2), cy = Math.floor(rowCount / 2);
+            const t = 100 + (ticks * 0.001);
+
+            for (let i = 0; i < pixelCount; i++) {
+                const x = i % colCount, y = Math.floor(i / colCount);
+                const v = ((Math.cos((x - cx) / 8.0) + Math.sin((y - cy) / 8.0) + t) * 16);
+                pixels[i] = String.fromCharCode(charRangeStart + (v % charRangeMax));
+            }
+        }
+
+        // Render Content
+        function render(ticks = 0) {
+            generate(ticks);
+            gridElemContent.textContent = pixels.reduce((prev, curr, idx) =>
+                prev + curr + ((idx + 1) % colCount === 0 ? '\n' : ''), '');
+            requestAnimationFrame(render);
+        }
+
+        // Initialize
+        window.addEventListener('resize', updateSize);
+        updateSize();
+    </script>
+    <script src="shit.js"></script>
+</body>
+</html>
