@@ -10,7 +10,7 @@ body {
 .popup {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
@@ -31,11 +31,15 @@ body {
 }
 
 button {
-    padding: 7px 15px;
+    padding: 6px 13px;
     font-size: 16px;
     cursor: pointer;
     background: rgb(238,174,202);background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
     font-family: 'Monocraft', 'Fira Code', Consolas, 'Courier New', monospace;
+    color: #ffff;
+    transition: background-color 0.3s, color 0.3s;
+    border-color: darkgray;
+    text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;
 }
 
 html, body {
@@ -117,3 +121,69 @@ html{
 		background-position: 0% 50%;
 	}
 }
+
+button:hover {
+  background-color: #ffffff;
+  color: rgba(238, 174, 202, 1);
+}
+
+img{
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 200px;
+  margin-right: 10px;
+}
+ul{
+ list-style-type:none;
+}
+
+
+
+          .wavy {
+            animation-name: wavy;
+            animation-duration: 1s;
+            animation-timing-function: ease;
+            animation-iteration-count: infinite;
+            position: relative;
+            top: 0;
+            left: 0;
+            font-family: mainstay;
+            color: rgba(238, 174, 202, 1);            
+            text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;
+
+          }
+
+        @font-face{
+            font-family: mainstay;
+            src: url(Mainstay.otf);
+        }
+
+
+        @keyframes wavy {
+            0% {
+                top: 0px;
+            }
+            50% {
+                top: -15px;
+            }
+            100% {
+                top: 0px;
+            }
+          } 
+
+        .animerad{
+          margin-top: 2rem;
+          letter-spacing: 5px;
+          font-size: 150px;
+          color: linear-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+          z-index: -1;
+          position: fixed;
+          right: 25%;
+          top: 30%;
+          transform: translateY(-50%);
+          transform: rotate(15deg);
+          text-shadow: 2px 2px white;
+
+        }

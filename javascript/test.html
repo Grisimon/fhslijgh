@@ -3,133 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fullscreen Grid</title>
-    <link rel="stylesheet" href="baba.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
-        /* General Body Styling */
-        body {
-            margin: 0;
-            overflow: hidden; /* Remove scrollbars */
-            box-sizing: border-box;
-            background: #222;
-            font-family: 'Press Start 2P', monospace;
-        }
-
-        /* Overlay Div */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-        }
-
-        .overlay h1 {
-            margin: 0;
-            background-color: #2d2d33;
-            padding: 10px 20px;
-        }
-
-        /* Grid Container */
-        #grid-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            display: table;
-            background: #222;
-        }
-
-        pre#grid {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            font-size: 8px;
-            display: table-cell;
-            color: #FFF;
-            position: relative;
-            background: #000;
-        }
-
-        /* Background and Content layers within Grid */
-        #grid-bg, #grid-content {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-    </style>
+    <title>Document</title>
 </head>
 <body>
-    <!-- Overlay Section -->
-    <div class="overlay">
-        <h1>wawawawwa</h1>
-    </div>
+    <h1 id="animated" style="color: blue; text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000; ;"></h1>
 
-    <!-- Grid Section -->
-    <div id="grid-container">
-        <pre id="grid">
-            <div id="grid-bg"></div>
-            <div id="grid-content"></div>
-        </pre>
-    </div>
-
-    <script>
-        // Cache DOM elements
-        const gridElem = document.querySelector('#grid');
-        const gridElemBg = document.querySelector('#grid-bg');
-        const gridElemContent = document.querySelector('#grid-content');
-        const gridFontSize = parseInt(getComputedStyle(gridElem).fontSize, 10);
-
-        // Variables
-        let colCount = 0, rowCount = 0, pixelCount = 0;
-        const charRangeStart = 33, charRangeEnd = 126, charRangeMax = charRangeEnd - charRangeStart;
-        let pixels = [];
-
-        // Update Grid Size
-        function updateSize() {
-            gridElemContent.innerHTML = "";
-            colCount = Math.floor(window.innerWidth);
-            rowCount = Math.floor(window.innerHeight);
-            pixelCount = colCount * rowCount;
-            pixels = Array(pixelCount).fill(String.fromCharCode(charRangeStart));
-            render();
+    <style>
+        body {
+            font-family: "Arial";
+            padding: 2rem;
+            color: #4a4a4a;
+            background: #e5e5e5;
         }
 
-        // Generate Pixels
-        function generate(ticks) {
-            const cx = Math.floor(colCount / 2), cy = Math.floor(rowCount / 2);
-            const t = 100 + (ticks * 0.001);
+        h1 {
+            margin-top: 2rem;
+            letter-spacing: 3px;
 
-            for (let i = 0; i < pixelCount; i++) {
-                const x = i % colCount, y = Math.floor(i / colCount);
-                const v = ((Math.cos((x - cx) / 8.0) + Math.sin((y - cy) / 8.0) + t) * 16);
-                pixels[i] = String.fromCharCode(charRangeStart + (v % charRangeMax));
+        }
+
+        .wavy {
+            animation-name: wavy;
+            animation-duration: 1s;
+            animation-timing-function: ease;
+            animation-iteration-count: infinite;
+            position: relative;
+            top: 0;
+            left: 0;
+            font-family: mainstay;
+        }
+
+        @font-face{
+            font-family: mainstay;
+            src: url(Mainstay.otf);
+        }
+
+
+        @keyframes wavy {
+            0% {
+                top: 0px;
+            }
+            50% {
+                top: -15px;
+            }
+            100% {
+                top: 0px;
             }
         }
+    </style>
+    <script>
+        function updateText(text) {
+            const h1 = document.getElementById("animated");
 
-        // Render Content
-        function render(ticks = 0) {
-            generate(ticks);
-            gridElemContent.textContent = pixels.reduce((prev, curr, idx) =>
-                prev + curr + ((idx + 1) % colCount === 0 ? '\n' : ''), '');
-            requestAnimationFrame(render);
+            h1.innerHTML = text
+                .split("")
+                .map(letter => `<span>${letter}</span>`)
+                .join("");
+
+            Array.from(h1.children).forEach((span, index) => {
+                setTimeout(() => {
+                    span.classList.add("wavy");
+                }, index * 50);
+            });
         }
 
-        // Initialize
-        window.addEventListener('resize', updateSize);
-        updateSize();
+        // Initialize with animated text
+        updateText("Goonsite");
     </script>
-    <script src="shit.js"></script>
 </body>
 </html>

@@ -37,3 +37,22 @@ document.addEventListener('DOMContentLoaded', (event) => {
         console.log('Volume set to:', this.value);
     });
 });
+
+
+function updateText(text) {
+    const h1 = document.getElementById("animated");
+
+    h1.innerHTML = text
+        .split("")
+        .map(letter => `<span>${letter}</span>`)
+        .join("");
+
+    Array.from(h1.children).forEach((span, index) => {
+        setTimeout(() => {
+            span.classList.add("wavy");
+        }, index * 50);
+    });
+}
+
+// Initialize with animated text
+updateText("Goonsite");
