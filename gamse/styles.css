@@ -10,15 +10,17 @@
     
 }
 button {
-    padding: 10px 20px;
-    border-color: #ffff;
-    border-width: 2px;
+    padding: 6px 13px;
     font-size: 16px;
-    color:  #ffff;
     cursor: pointer;
     background: rgb(238,174,202);background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
     font-family: 'Monocraft', 'Fira Code', Consolas, 'Courier New', monospace;
+    color: #ffff;
+    transition: background-color 0.3s, color 0.3s;
+    border-color: darkgray;
+    text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;
 }
+
 
 body {
     background: rgb(238,174,202);background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
@@ -26,6 +28,12 @@ body {
 	animation: gradient 20s ease infinite;
 	height: 100vh;
 }
+
+button:hover {
+    background-color: #ffffff;
+    color: rgba(238, 174, 202, 1);
+  
+  }
 
 @keyframes gradient {
 	0% {
@@ -53,11 +61,6 @@ body {
 
   }
 
-/*@font-face{
-    font-family: mainstay;
-    src: url('fhslijgh/Mainstay.otf');
-
-}*/
 @font-face {
     font-family: 'Mainstay';
     src: url('../Mainstay.otf') format('opentype'); /* Justera formatet om nödvändigt */
@@ -93,3 +96,4 @@ body {
   /*  text-shadow: 2px 2px white;*/
   opacity: 30%;
 }
+
