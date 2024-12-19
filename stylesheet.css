@@ -7,10 +7,6 @@ body {
     background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
 }
 
-html body {
-  height: 100%;
-}
-
 .popup {
     display: none;
     position: fixed;
@@ -102,3 +98,22 @@ html{
   .container::-webkit-scrollbar, .container, img, #canvas, .popup-content,a, .popup, button, input, textarea, select, body {
     cursor:url("soy.png"),  auto;
   }
+
+  body {
+    background: rgb(238,174,202);background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    background-size: 400% 400%;
+	animation: gradient 20s ease infinite;
+	height: 100vh;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
