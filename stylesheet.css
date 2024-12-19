@@ -128,6 +128,7 @@ html{
 button:hover {
   background-color: #ffffff;
   color: rgba(238, 174, 202, 1);
+
 }
 
 img{
@@ -144,67 +145,51 @@ ul{
 
 
 
-          .wavy {
-            animation-name: wavy;
-            animation-duration: 1s;
-            animation-timing-function: ease;
-            animation-iteration-count: infinite;
-            position: relative;
-            top: 0;
-            left: 0;
-            font-family: mainstay;
-            color: rgba(238, 174, 202, 1);            
-            text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;
+.wavy {
+  animation-name: wavy;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  position: relative;
+  top: 0;
+  left: 0;
+  font-family: mainstay;
+  color: rgba(238, 174, 202, 1);            
+  text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;
 
-          }
+}
 
-        @font-face{
-            font-family: mainstay;
-            src: url(Mainstay.otf);
-        }
+@font-face{
+     font-family: mainstay;
+     src: url(Mainstay.otf);
+}
 
 
-        @keyframes wavy {
-            25% {
-                top: 0px;
-            }
-            50% {
-                top: -20px;
-            }
-            75%{
-              top: 20px;
-            }
-            100% {
-                top: 0px;
-            }
-          } 
-
-        /*.animerad{
-          margin-top: 2rem;
-          letter-spacing: 5px;
-          font-size: 150px;
-          color: linear-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
-          z-index: -1;
-          position: fixed;
-          right: 25%;
-          top: 30%;
-          transform: translateY(-50%);
-          transform: rotate(15deg);
-          text-shadow: 2px 2px white;
-
-        }*/
-
-        .animerad {
-          margin-top: 1rem;
-          letter-spacing: 5px;
-          font-size: 150px;
-          font-size: 20vw;
-          min-width: 100px;
-          color: linear-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
-          z-index: -1000;
-          position: fixed;
-          top: 50%; /* Centers vertically */
-          left: 50%; /* Centers horizontally */
-          transform: translate(-50%, -50%) rotate(15deg); /* Centers and applies rotation */
-          /*  text-shadow: 2px 2px white;*/
-      }
+ @keyframes wavy {
+    25% {
+         top: 0px;
+    }
+    50% {
+        top: -20px;
+    }
+    75%{
+      top: 20px;
+    }
+    100% {
+        top: 0px;
+    }
+} 
+.animerad {
+   margin-top: 1rem;
+   letter-spacing: 5px;
+   font-size: 150px;
+   font-size: 20vw;
+    min-width: 100px;
+   color: linear-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+   z-index: -1000;
+   position: fixed;
+   top: 50%; /* Centers vertically */
+   left: 50%; /* Centers horizontally */
+   transform: translate(-50%, -50%) rotate(15deg); /* Centers and applies rotation */
+   /*  text-shadow: 2px 2px white;*/
+}

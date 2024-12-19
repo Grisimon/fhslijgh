@@ -40,14 +40,14 @@
             animation: rotateX 5s linear infinite;
         }
 
-        @keyframes rotateX {
+        /*@keyframes rotateX {
             from {
                 transform: rotateX(0deg);
             }
             to {
                 transform: rotateX(360deg);
             }
-        }
+        }*/
 
         .home-link {
             text-decoration: none;
@@ -75,12 +75,84 @@
             margin-top: 50px;
             
         }
+        .wavy {
+            animation-name: wavy;
+            animation-duration: 1s;
+            animation-timing-function: ease;
+            animation-iteration-count: infinite;
+            position: relative;
+            top: 0;
+            left: 0;
+            font-family: mainstay;
+            color: rgba(238, 174, 202, 1);            
+            text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;
+
+          }
+
+        @font-face{
+            font-family: mainstay;
+            src: url(Mainstay.otf);
+        }
+
+
+        @keyframes wavy {
+            25% {
+                top: 0px;
+            }
+            50% {
+                top: -20px;
+            }
+            75%{
+              top: 20px;
+            }
+            100% {
+                top: 0px;
+            }
+          } 
+        .animerad {
+          margin-top: 1rem;
+          letter-spacing: 5px;
+          font-size: 150px;
+          font-size: 20vw;
+          min-width: 100px;
+          color: linear-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+          z-index: -1000;
+          position: fixed;
+          top: 50%; /* Centers vertically */
+          left: 50%; /* Centers horizontally */
+          transform: translate(-50%, -50%) rotate(15deg); /* Centers and applies rotation */
+          /*  text-shadow: 2px 2px white;*/
+          opacity: 30%;
+      }
     </style>
+
 </head>
 <body>
+    <h1  class="animerad" id="animated" ></h1>
     <h1>404</h1>
     <p class="motherfucker">Oops! The page you’re looking for doesn’t exist :3 </p>
     <img src="ZIONS.png" alt="Rotating" class="rotating-image">
     <a href="index.html" class="home-link">Go Back to Home</a>
+<script>
+        function updateText(text) {
+    let delay = 200;
+    const h1 = document.getElementById("animated");
+
+    h1.innerHTML = text
+        .split("")
+        .map(letter => `<span>${letter}</span>`)
+        .join("");
+
+    Array.from(h1.children).forEach((span, index) => {
+        setTimeout(() => {
+            span.classList.add("wavy");
+        }, index * 60 + delay);
+    });
+}
+
+// Initialize with animated text
+updateText("Goonsite");
+</script>
+
 </body>
 </html>

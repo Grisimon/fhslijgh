@@ -38,3 +38,58 @@ body {
 		background-position: 0% 50%;
 	}
 }
+
+.wavy {
+    animation-name: wavy;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+    position: relative;
+    top: 0;
+    left: 0;
+    font-family: mainstay;
+    color: rgba(238, 174, 202, 1);            
+    text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;
+
+  }
+
+/*@font-face{
+    font-family: mainstay;
+    src: url('fhslijgh/Mainstay.otf');
+
+}*/
+@font-face {
+    font-family: 'Mainstay';
+    src: url('../Mainstay.otf') format('opentype'); /* Justera formatet om nödvändigt */
+}
+
+
+@keyframes wavy {
+    25% {
+        top: 0px;
+    }
+    50% {
+        top: -20px;
+    }
+    75%{
+      top: 20px;
+    }
+    100% {
+        top: 0px;
+    }
+  } 
+.animerad {
+  margin-top: 1rem;
+  letter-spacing: 5px;
+  font-size: 150px;
+  font-size: 20vw;
+  min-width: 100px;
+  color: linear-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+  z-index: -1000;
+  position: fixed;
+  top: 50%; /* Centers vertically */
+  left: 50%; /* Centers horizontally */
+  transform: translate(-50%, -50%) rotate(15deg); /* Centers and applies rotation */
+  /*  text-shadow: 2px 2px white;*/
+  opacity: 30%;
+}

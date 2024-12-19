@@ -23,6 +23,29 @@
       <li><button onclick="openNewWindow1()">DeepDive</button></li>
     </ul>
   </div>
+<h1 class="animerad" id="animated"></h1>
 
+
+  
+<script>
+  function updateText(text) {
+    let delay = 200;
+    const h1 = document.getElementById("animated");
+
+    h1.innerHTML = text
+        .split("")
+        .map(letter => `<span>${letter}</span>`)
+        .join("");
+
+    Array.from(h1.children).forEach((span, index) => {
+        setTimeout(() => {
+            span.classList.add("wavy");
+        }, index * 60 + delay);
+    });
+}
+
+// Initialize with animated text
+updateText("Goonsite");
+</script>
 </body>
 </html>
