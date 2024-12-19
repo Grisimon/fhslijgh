@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 
 function updateText(text) {
+    let delay = 200;
     const h1 = document.getElementById("animated");
 
     h1.innerHTML = text
@@ -50,7 +51,7 @@ function updateText(text) {
     Array.from(h1.children).forEach((span, index) => {
         setTimeout(() => {
             span.classList.add("wavy");
-        }, index * 50);
+        }, index * 60 + delay);
     });
 }
 
