@@ -28,7 +28,6 @@ body {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     text-align: center;
-    border: #000;
     border-radius: 10px;
 }
 
@@ -202,7 +201,7 @@ ul{
           font-size: 20vw;
           min-width: 100px;
           color: linear-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
-          z-index: -1;
+          z-index: -1000;
           position: fixed;
           top: 50%; /* Centers vertically */
           left: 50%; /* Centers horizontally */
