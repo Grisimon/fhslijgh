@@ -147,7 +147,7 @@ ul{
 
 .wavy {
   animation-name: wavy;
-  animation-duration: 1s;
+  animation-duration: 1.5s;
   animation-timing-function: ease;
   animation-iteration-count: infinite;
   position: relative;
@@ -167,16 +167,16 @@ ul{
 
  @keyframes wavy {
     25% {
-         top: 0px;
+         top: 0px; 
     }
     50% {
-        top: -20px;
+        top: -20px;text-shadow: 5px -5px 0 #b1456d, 10px -10px 0 rgba(148, 187, 233, 1);
     }
     75%{
-      top: 20px;
+      top: 20px;text-shadow: 2px 2px 0 rgba(148, 187, 233, 1), 5px 5px 0 #b1456d;
     }
     100% {
-        top: 0px;
+        top: 0px; 
     }
 } 
 .animerad {
@@ -185,7 +185,7 @@ ul{
    font-size: 150px;
    font-size: 20vw;
     min-width: 100px;
-   color: linear-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+   color: linear-gradient(circle, rgb(210, 153, 178) 0%, rgba(148, 187, 233, 1) 100%);
    z-index: -1000;
    position: fixed;
    top: 50%; /* Centers vertically */
@@ -193,3 +193,12 @@ ul{
    transform: translate(-50%, -50%) rotate(15deg); /* Centers and applies rotation */
    /*  text-shadow: 2px 2px white;*/
 }
+/* @keyframes shadow-dance {
+  0% {
+    text-shadow: 5px -5px 0 #ff005e, 10px -10px 0 #00d4ff;
+  }
+
+  50% {
+    text-shadow: 3px 3px 0 #00d4ff, 7px 7px 0 #ff005e;
+  }
+} */
