@@ -6,9 +6,40 @@
     <title>DeepDive</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body style="background: rgb(2,0,36); background: linear-gradient(18deg, rgba(2,0,36,1) 11%, rgba(0,212,255,1) 100%);;">
-    <div class="center" style="height: 500px; width: 100%; overflow: hidden;">
-    <iframe frameborder="0" src="https://itch.io/embed-upload/12281260?color=333333" allowfullscreen="" width="1000" height="520"><a href="https://ejnar.itch.io/deepdive">Play DeepDive on itch.io</a></iframe>
+<body>
+
+    <div >  
+        <h1 id="shadow-text">Goonsite</h1>
     </div>
+    <div style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;background-color: rgba(0, 0, 0, 0.5);z-index: 10;display: flex;align-items: center;justify-content: center;color: white;font-size: 20px;position: fixed;">
+        <!-- <h1 style="position: absolute; margin-top: -30%;margin-left: -75%; ">wawawawwa</h1> -->
+        <iframe frameborder="0" src="https://itch.io/embed-upload/12281260?color=333333" allowfullscreen="" width="1000vw" height="600vw"><a href="https://ejnar.itch.io/deepdive">Play DeepDive on itch.io</a></iframe>
+
+        </div>
+    <script>
+        const h1 = document.getElementById("shadow-text");
+        const shadowCount = 80; // Number of text shadows
+        const maxWidth = window.innerWidth;
+        const maxHeight = window.innerHeight;
+
+        // Generate shadow elements
+        for (let i = 0; i < shadowCount; i++) {
+            const shadowSpan = document.createElement("span");
+            shadowSpan.className = "shadow-span";
+            shadowSpan.textContent = h1.textContent;
+
+
+            const x = Math.random() * maxWidth;
+            const y = Math.random() * maxHeight;
+
+            shadowSpan.style.left = `${x}px`;
+            shadowSpan.style.top = `${y}px`;
+
+            // Cascading animation delay
+            shadowSpan.style.animationDelay = `${i * 0.03}s`;
+
+            document.body.appendChild(shadowSpan);
+        }
+    </script>
 </body>
 </html>
