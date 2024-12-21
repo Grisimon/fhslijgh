@@ -1,43 +1,194 @@
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="baba.css">
+    <title>Cascading Wave Shadow</title>
+
+    <style>
+        @font-face {
+            font-family: 'Mainstay';
+            src: url('../Mainstay.otf') format('opentype');
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 3vw; /* Dynamic font size */
+            font-family: 'Mainstay', sans-serif;
+            color: transparent; /* Base text hidden */
+            position: absolute;
+            transform: rotate(15deg);
+        }
+
+        .shadow-span {
+            position: absolute;
+            font-size: 3vw;
+            font-family: 'Mainstay', sans-serif;
+            color: transparent;
+            transform: rotate(-15deg);
+            animation: wave 1.5s infinite;
+        }
+
+        @keyframes wave {
+            0% {
+                text-shadow: 0px 0px 0 #ff005e;
+                opacity: 0;
+            }
+            50% {
+                text-shadow: 2px 2px 0 rgba(238, 174, 202, 1) ,-5px -5px 5px #b1456d, -10px -10px 5px rgba(148, 187, 233, 1);
+                opacity: 1;
+            }
+            100% {
+                text-shadow: 0px 0px 0 #00d4ff;
+                opacity: 0;
+            }
+
+        
+        }
+        @keyframes wave {
+            0% {
+                text-shadow: 0px 0px 0 #ff005e;
+                opacity: 0;
+                transform: scale(0.8); /* Start smaller */
+            }
+            50% {
+                text-shadow: 2px 2px 0 rgba(238, 174, 202, 1), -5px -5px 5px #b1456d, -10px -10px 5px rgba(148, 187, 233, 1);
+                opacity: 1;
+                transform: scale(1.2); /* Grow larger */
+            }
+            100% {
+                text-shadow: 0px 0px 0 #00d4ff;
+                opacity: 0;
+                transform: scale(0.8); /* Shrink back */
+            }
+        }
+    </style>
 </head>
 <body>
+    <h1 id="shadow-text">Goonsite</h1>
+
+    <script>
+        const h1 = document.getElementById("shadow-text");
+        const shadowCount = 80; // Number of text shadows
+        const maxWidth = window.innerWidth;
+        const maxHeight = window.innerHeight;
+
+        // Generate shadow elements
+        for (let i = 0; i < shadowCount; i++) {
+            const shadowSpan = document.createElement("span");
+            shadowSpan.className = "shadow-span";
+            shadowSpan.textContent = h1.textContent;
+
+            // Random positions within the screen with rotation
+            const x = Math.random() * maxWidth - maxWidth / 2;
+            const y = Math.random() * maxHeight - maxHeight / 2;
+            shadowSpan.style.transform = `translate(${x}px, ${y}px) rotate(-15deg)`; // Combine translate and rotate
+
+
+            // Cascading animation delay
+            shadowSpan.style.animationDelay = `${i * 0.03}s`;
+
+            document.body.appendChild(shadowSpan);
+        }
+    </script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cascading Wave Shadow with Scale</title>
+
     <style>
+        @font-face {
+            font-family: 'Mainstay';
+            src: url('../Mainstay.otf') format('opentype');
+        }
+
         body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background: #121212;
-    font-family: 'Arial', sans-serif;
-}
+            margin: 0;
+            height: 100vh;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
 
-.shadow-dance-text {
-    font-size: 4rem;
-    color: #fff;
-    text-shadow: 5px -5px 0 #ff005e, 10px -10px 0 #00d4ff;
-    animation: shadow-dance 2s ;
-}
+        h1 {
+            font-size: 3vw; /* Dynamic font size */
+            font-family: 'Mainstay', sans-serif;
+            color: transparent; /* Base text hidden */
+            position: absolute;
+        }
 
-@keyframes shadow-dance {
-    0% {
-        text-shadow: 5px -5px 0 #ff005e, 10px -10px 0 #00d4ff;
-    }
-    50% {
-        text-shadow: 2px 2px 0 #00d4ff, 5px 5px 0 #ff005e;
-    }
-}
+        .shadow-span {
+            position: absolute;
+            font-size: 3vw;
+            font-family: 'Mainstay', sans-serif;
+            color: transparent;
+            animation: wave 1.5s infinite;
+        }
 
+        @keyframes wave {
+            0% {
+                text-shadow: 0px 0px 0 #ff005e;
+                opacity: 0;
+                transform: scale(0.8) rotate(-15deg); /* Start smaller with rotation */
+            }
+            50% {
+                 text-shadow: 2px 2px 0 rgba(238, 174, 202, 1), -5px -5px 5px #b1456d, -10px -10px 5px rgba(148, 187, 233, 1);
+                opacity: 1;
+                transform: scale(1.2) rotate(-15deg); /* Grow larger with rotation */
+            }
+            100% {
+                text-shadow: 0px 0px 0 #00d4ff;
+                opacity: 0;
+                transform: scale(0.8) rotate(-15deg); /* Shrink back with rotation */
+            }
+        }
     </style>
-    <div class="shadow-dance-container">
-        <h1 class="shadow-dance-text">czds</h1>
-    </div>
-    
+</head>
+<body>
+    <h1 id="shadow-text">Goonsite</h1>
+
+    <script>
+        const h1 = document.getElementById("shadow-text");
+        const shadowCount = 80; // Number of text shadows
+        const maxWidth = window.innerWidth;
+        const maxHeight = window.innerHeight;
+
+        // Generate shadow elements
+        for (let i = 0; i < shadowCount; i++) {
+            const shadowSpan = document.createElement("span");
+            shadowSpan.className = "shadow-span";
+            shadowSpan.textContent = h1.textContent;
+
+            // Random positions within the screen
+            const x = Math.random() * maxWidth;
+            const y = Math.random() * maxHeight;
+
+            // Use left and top to position the element
+            shadowSpan.style.left = `${x}px`;
+            shadowSpan.style.top = `${y}px`;
+
+            // Cascading animation delay
+            shadowSpan.style.animationDelay = `${i * 0.03}s`;
+
+            // Append the shadow span to the body
+            document.body.appendChild(shadowSpan);
+        }
+    </script>
 </body>
 </html>

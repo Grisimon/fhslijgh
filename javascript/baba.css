@@ -23,3 +23,7 @@
         text-shadow: -5px -5px 0 #00d4ff, -10px -10px 0 #ff005e;
     }
 } */
+@font-face {
+    font-family: 'Mainstay';
+    src: url('../Mainstay.otf') format('opentype');
+    }
