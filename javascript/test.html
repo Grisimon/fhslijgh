@@ -1,104 +1,12 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cascading Wave Shadow with Scale</title>
-
-    <style>
-        @font-face {
-            font-family: 'Mainstay';
-            src: url('../Mainstay.otf') format('opentype');
-        }
-
-        body {
-            margin: 0;
-            height: 100vh;
-            background-color: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .gwagwa {
-            font-size: 3vw; /* Dynamic font size */
-            font-family: 'Mainstay', sans-serif;
-            color: transparent; 
-            position: absolute;
-        }
-
-        .shadow-span {
-            position: absolute;
-            font-size: 3vw;
-            font-family: 'Mainstay', sans-serif;
-            color: transparent;
-            animation: wave 1.5s infinite;
-        }
-
-        @keyframes wave {
-            0% {
-                text-shadow: 0px 0px 0 #ff005e;
-                opacity: 0;
-                transform: scale(0.8) rotate(-15deg); /* Start smaller with rotation */
-            }
-            50% {
-                 text-shadow: 2px 2px 0 rgba(238, 174, 202, 1), -5px -5px 5px #b1456d, -10px -10px 5px rgba(148, 187, 233, 1);
-                opacity: 1;
-                transform: scale(1.2) rotate(-15deg); /* Grow larger with rotation */
-            }
-            100% {
-                text-shadow: 0px 0px 0 #00d4ff;
-                opacity: 0;
-                transform: scale(0.8) rotate(-15deg); /* Shrink back with rotation */
-            }
-        }
-
-    </style>
-</head>
-<body>
-    <div >  
-        <h1 id="shadow-text">Goonsite</h1>
-    </div>
-    <div style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;background-color: rgba(0, 0, 0, 0.5);z-index: 10;display: flex;align-items: center;justify-content: center;color: white;font-size: 20px;position: fixed;">
-        <h1 style="position: absolute; margin-top: -30%;margin-left: -75%; ">wawawawwa</h1>
-        </div>
-    <script>
-        const h1 = document.getElementById("shadow-text");
-        const shadowCount = 80; // Number of text shadows
-        const maxWidth = window.innerWidth;
-        const maxHeight = window.innerHeight;
-
-        // Generate shadow elements
-        for (let i = 0; i < shadowCount; i++) {
-            const shadowSpan = document.createElement("span");
-            shadowSpan.className = "shadow-span";
-            shadowSpan.textContent = h1.textContent;
-
-
-            const x = Math.random() * maxWidth;
-            const y = Math.random() * maxHeight;
-
-            shadowSpan.style.left = `${x}px`;
-            shadowSpan.style.top = `${y}px`;
-
-            // Cascading animation delay
-            shadowSpan.style.animationDelay = `${i * 0.03}s`;
-
-            document.body.appendChild(shadowSpan);
-        }
-    </script>
-</body>
-</html> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Repeating Text Effect</title>
+    <title>Diagonal Wavy Text</title>
     <style>
         body {
-            margin: 0;
+
             font-family: Arial, sans-serif;
             background: #111;
             color: #fff;
@@ -112,44 +20,96 @@
         .text-container {
             position: relative;
             display: inline-block;
+            justify-content: center;
+            align-items: center;
         }
 
-        .text-repeat {
-            position: absolute;
-            top: 0;
-            left: 0;
-                   
-        }
-
-        h1 {
-            font-size: 4rem;
+        /* Base Text Style */
+        .base-text {
+            font-size: 4vw;
             position: relative;
-            z-index: 1;
-            -webkit-text-stroke: 1px black;
-            animation: wave 1.5s infinite;
+            opacity: 0; /* Hide base text */
+            justify-content: center;
+            align-items: center;
         }
- 
 
+        /* Clone Style (inherits from base-text) */
+        .clone-text {
+            position: absolute;
+            -webkit-text-stroke: 1px black;
+            text-shadow: 2px 2px 0 rgba(148, 187, 233, 1), 5px 5px 0 #b1456d;
+            animation: wave 1.5s infinite ;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Wavy Animation */
+        @keyframes wave {
+        25% {
+         top: 0%; 
+        }
+        50% {
+        top: -20px;text-shadow: 5px -5px 0 #b1456d, 10px -10px 0 rgba(148, 187, 233, 1);
+        }
+        75%{
+      top: 20px;text-shadow: 2px 2px 0 rgba(148, 187, 233, 1), 5px 5px 0 #b1456d;
+        }
+        100% {
+        top: 0%; 
+        }
+        } 
     </style>
 </head>
 <body>
     <div class="text-container">
-        <h1 id="baseText">Repeating Text</h1>
+        <h1 class="base-text" id="baseText">Diagonal Text</h1>
     </div>
 
     <script>
         const baseText = document.getElementById("baseText");
         const textContainer = baseText.parentElement;
 
-        const repeatCount = 50; // Number of repeated texts
-        const offsetDistance = 10; // Distance between repeated texts
+        const offsetDistance = 15; // Distance between repeated texts
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
 
-        for (let i = 1; i <= repeatCount; i++) {
-            const repeatText = baseText.cloneNode(true);
-            repeatText.style.transform = `translate(${i * offsetDistance}px, ${-i * offsetDistance}px)`; // Diagonal upward-right
-            repeatText.style.zIndex = -i; // Stack behind the base text
-            repeatText.classList.add("text-repeat");
-            textContainer.appendChild(repeatText);
+        // Calculate maximum repetitions needed to fill the screen
+        const maxRepetitions = Math.ceil(
+            Math.sqrt(viewportWidth ** 2 + viewportHeight ** 2) / offsetDistance
+        );
+
+        // Generate clones to fill diagonal directions
+        for (let i = 1; i <= maxRepetitions; i++) {
+            // Upward-right clone
+            const upwardClone = createClone(
+                i * offsetDistance,
+                -i * offsetDistance,
+                i
+            );
+            textContainer.appendChild(upwardClone);
+
+            // Downward-left clone
+            const downwardClone = createClone(
+                -i * offsetDistance,
+                i * offsetDistance,
+                i
+            );
+            textContainer.appendChild(downwardClone);
+        }
+
+        /**
+         * Creates a text clone with specified x and y offsets and delay.
+         * @param {number} offsetX Horizontal offset.
+         * @param {number} offsetY Vertical offset.
+         * @param {number} delayMultiplier Multiplier for animation delay.
+         * @returns {HTMLElement} The cloned element.
+         */
+        function createClone(offsetX, offsetY, delayMultiplier) {
+            const clone = baseText.cloneNode(true);
+            clone.className = "clone-text"; // Assign the clone-specific class
+            clone.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+            clone.style.animationDelay = `${delayMultiplier * 0.1}s`;
+            return clone;
         }
     </script>
 </body>
