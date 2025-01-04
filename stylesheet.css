@@ -32,8 +32,10 @@ body {
 }
 
 button {
-    padding: 6px 13px;
-    font-size: 16px;
+    /* padding: 6px 13px;
+    font-size: 16px;*/
+    padding: 0.30vw 0.75vw;
+    font-size: 1vw;
     cursor: pointer;
     background: rgb(238,174,202);background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
     font-family: 'Monocraft', 'Fira Code', Consolas, 'Courier New', monospace;
@@ -74,10 +76,11 @@ html, body {
     top: 50%; 
     right: 10px; 
     transform: translateY(-50%);
-    max-width: 200px;
-    border: 2px solid #000;
-    border-radius: 5px; /* Optional: rounded corners */
-    padding: 5px;
+    width: 20vw;
+    height: 13vw;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    padding: 2px;
 
   }
 
@@ -182,9 +185,7 @@ ul{
 .animerad {
    margin-top: 1rem;
    letter-spacing: 5px;
-   font-size: 150px;
    font-size: 20vw;
-    min-width: 100px;
    color: linear-gradient(circle, rgb(210, 153, 178) 0%, rgba(148, 187, 233, 1) 100%);
    z-index: -1000;
    position: fixed;
