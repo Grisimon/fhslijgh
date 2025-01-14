@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .api-data {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>API Data Display</h1>
+    <button id="fetchDataBtn">Fetch Data</button>
+    <div class="api-data" id="apiData">Click the button to fetch data from the API.</div>
+
+    <script>
+        // URL of your JSON API
+        const apiUrl = 'https://example.com/api/data';
+
+        // Fetch data from the API when the button is clicked
+        document.getElementById('fetchDataBtn').addEventListener('click', async () => {
+            const apiDataDiv = document.getElementById('apiData');
+            try {
+                // Fetch data from the API
+                const response = await fetch(apiUrl);
+                
+                // Check if the response is OK
+                if (!response.ok) {
+                    throw new Error(`API error: ${response.status}`);
+                }
+
+                // Parse the JSON data
+                const data = await response.json();
+
+                // Display the data
+                apiDataDiv.innerHTML = `
+                    <p><strong>Message:</strong> ${data.message}</p>
+                    <p><strong>Timestamp:</strong> ${data.timestamp}</p>
+                `;
+            } catch (error) {
+                // Handle errors (e.g., network issues, API errors)
+                apiDataDiv.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+            }
+        });
+    </script>
+</body>
+</html>
