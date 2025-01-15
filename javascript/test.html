@@ -3,115 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diagonal Wavy Text</title>
-    <style>
-        body {
-
-            font-family: Arial, sans-serif;
-            background: #111;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        .text-container {
-            position: relative;
-            display: inline-block;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Base Text Style */
-        .base-text {
-            font-size: 4vw;
-            position: relative;
-            opacity: 0; /* Hide base text */
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Clone Style (inherits from base-text) */
-        .clone-text {
-            position: absolute;
-            -webkit-text-stroke: 1px black;
-            text-shadow: 2px 2px 0 rgba(148, 187, 233, 1), 5px 5px 0 #b1456d;
-            animation: wave 1.5s infinite ;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Wavy Animation */
-        @keyframes wave {
-        25% {
-         top: 0%; 
-        }
-        50% {
-        top: -20px;text-shadow: 5px -5px 0 #b1456d, 10px -10px 0 rgba(148, 187, 233, 1);
-        }
-        75%{
-      top: 20px;text-shadow: 2px 2px 0 rgba(148, 187, 233, 1), 5px 5px 0 #b1456d;
-        }
-        100% {
-        top: 0%; 
-        }
-        } 
-    </style>
+    <title>API Interaction</title>
 </head>
 <body>
-    <div class="text-container">
-        <h1 class="base-text" id="baseText">Diagonal Text</h1>
-    </div>
+    <h1>Server-Side Data</h1>
+    <div id="currentData"></div>
+    <form id="updateForm">
+        <input type="text" id="newMessage" placeholder="Enter new message" required />
+        <button type="submit">Update Message</button>
+    </form>
 
     <script>
-        const baseText = document.getElementById("baseText");
-        const textContainer = baseText.parentElement;
+        const apiUrl = 'http://localhost:3000/api/data';
 
-        const offsetDistance = 15; // Distance between repeated texts
-        const viewportWidth = window.innerWidth;
-        const viewportHeight = window.innerHeight;
+        // Fetch and display current data
+        const fetchData = async () => {
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+            document.getElementById('currentData').innerText = `Message: ${data.message}`;
+        };
 
-        // Calculate maximum repetitions needed to fill the screen
-        const maxRepetitions = Math.ceil(
-            Math.sqrt(viewportWidth ** 2 + viewportHeight ** 2) / offsetDistance
-        );
+        // Update the data on the server
+        document.getElementById('updateForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const newMessage = document.getElementById('newMessage').value;
 
-        // Generate clones to fill diagonal directions
-        for (let i = 1; i <= maxRepetitions; i++) {
-            // Upward-right clone
-            const upwardClone = createClone(
-                i * offsetDistance,
-                -i * offsetDistance,
-                i
-            );
-            textContainer.appendChild(upwardClone);
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: newMessage })
+            });
 
-            // Downward-left clone
-            const downwardClone = createClone(
-                -i * offsetDistance,
-                i * offsetDistance,
-                i
-            );
-            textContainer.appendChild(downwardClone);
-        }
+            const result = await response.json();
+            if (result.success) {
+                alert('Message updated!');
+                fetchData(); // Refresh the displayed data
+            } else {
+                alert('Error: ' + result.error);
+            }
+        });
 
-        /**
-         * Creates a text clone with specified x and y offsets and delay.
-         * @param {number} offsetX Horizontal offset.
-         * @param {number} offsetY Vertical offset.
-         * @param {number} delayMultiplier Multiplier for animation delay.
-         * @returns {HTMLElement} The cloned element.
-         */
-        function createClone(offsetX, offsetY, delayMultiplier) {
-            const clone = baseText.cloneNode(true);
-            clone.className = "clone-text"; // Assign the clone-specific class
-            clone.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-            clone.style.animationDelay = `${delayMultiplier * 0.1}s`;
-            return clone;
-        }
+        // Initial data fetch
+        fetchData();
     </script>
 </body>
 </html>
-
