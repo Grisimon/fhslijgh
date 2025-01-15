@@ -26,13 +26,13 @@ const writeData = (data) => {
 };
 
 // API endpoint to get the current data
-app.get('/api/data', (req, res) => {
+app.get('/functions/data', (req, res) => {
     const data = readData();
     res.json(data);
 });
 
 // API endpoint to update the data
-app.post('/api/data', (req, res) => {
+app.post('/functions/data', (req, res) => {
     const newData = req.body; // Expecting JSON payload like { "message": "New message" }
     if (!newData.message) {
         return res.status(400).json({ error: 'Missing "message" field in request body.' });
