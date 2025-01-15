@@ -7,44 +7,42 @@
 </head>
 <body>
     <h1>Server-Side Data</h1>
-    <div id="currentData"></div>
-    <form id="updateForm">
-        <input type="text" id="newMessage" placeholder="Enter new message" required />
-        <button type="submit">Update Message</button>
-    </form>
+    <button id="fetchDataBtn">Fetch Data</button>
+    <div class="api-data" id="apiData">Click the button to fetch data from the API.</div>
 
     <script>
-        const apiUrl = 'http://goonsite.se/functions/data.json';
+        // Updated API endpoint
+        const apiUrl = 'https://goonsite.se/functions/data.json';
 
         // Fetch and display current data
         const fetchData = async () => {
-            const response = await fetch(apiUrl);
-            const data = await response.json();
-            document.getElementById('currentData').innerText = `Message: ${data.message}`;
+            const apiDataDiv = document.getElementById('apiData');
+            try {
+                console.log('Fetching data from:', apiUrl);
+
+                // Fetch the API data
+                const response = await fetch(apiUrl);
+
+                // Check if the response is OK
+                if (!response.ok) throw new Error(`API error: ${response.status}`);
+
+                // Parse JSON data
+                const data = await response.json();
+
+                // Display the fetched data
+                apiDataDiv.innerHTML = `
+                    <p><strong>Message:</strong> ${data.message}</p>
+                    <p><strong>Timestamp:</strong> ${data.timestamp}</p>
+                `;
+            } catch (error) {
+                // Handle fetch errors
+                console.error('Fetch error:', error.message);
+                apiDataDiv.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+            }
         };
 
-        // Update the data on the server
-        document.getElementById('updateForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const newMessage = document.getElementById('newMessage').value;
-
-            const response = await fetch(apiUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ message: newMessage })
-            });
-
-            const result = await response.json();
-            if (result.success) {
-                alert('Message updated!');
-                fetchData(); // Refresh the displayed data
-            } else {
-                alert('Error: ' + result.error);
-            }
-        });
-
-        // Initial data fetch
-        fetchData();
+        // Attach event listener to the button
+        document.getElementById('fetchDataBtn').addEventListener('click', fetchData);
     </script>
 </body>
 </html>
