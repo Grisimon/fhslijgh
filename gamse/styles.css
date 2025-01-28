@@ -96,4 +96,15 @@ button:hover {
   /*  text-shadow: 2px 2px white;*/
   opacity: 30%;
 }
-
+img {
+  position: fixed; 
+  top: 50%; 
+  right: 10px; 
+  transform: translateY(-50%);
+  width: 20vw;
+  height: 13vw;
+  border: 2px solid #fff; opacity: 80%;
+  border-radius: 5px;
+  padding: 2px;
+  opacity: 80%;
+}
