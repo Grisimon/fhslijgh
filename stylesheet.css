@@ -34,8 +34,8 @@ body {
 button {
     /* padding: 6px 13px;
     font-size: 16px;*/
-    padding: 0.30vw 0.75vw;
-    font-size: 1vw;
+    padding: 0.50vh 0.75vw;
+    font-size: 1.1vw;
     cursor: pointer;
     background: rgb(238,174,202);background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
     font-family: 'Monocraft', 'Fira Code', Consolas, 'Courier New', monospace;
