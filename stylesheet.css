@@ -43,6 +43,7 @@ button {
     transition: background-color 0.3s, color 0.3s;
     border-color: darkgray;
     text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;
+    cursor: pointer;
 }
 
 html, body {
@@ -131,7 +132,7 @@ html{
 button:hover {
   background-color: #ffffff;
   color: rgba(238, 174, 202, 1);
-
+  cursor: pointer;
 }
 
 img{

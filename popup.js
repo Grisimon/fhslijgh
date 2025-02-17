@@ -57,3 +57,18 @@ function updateText(text) {
 
 // Initialize with animated text
 updateText("Goonsite");
+
+//  document.addEventListener('DOMContentLoaded', function() {
+//      var button = document.querySelector('button');
+//      var audio = document.getElementById('hover-sound');
+
+//      button.addEventListener('mouseenter', function() {
+//          audio.currentTime = 0; // Rewind to start
+//          audio.play();
+//      });
+
+//      button.addEventListener('mouseleave', function() {
+//          audio.pause();
+//          audio.currentTime = 0; // Reset to start
+//      });
+//  });

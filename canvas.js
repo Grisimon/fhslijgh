@@ -103,3 +103,17 @@ canvas.width = W;
 canvas.height = H;
 Draw();
 
+document.addEventListener('DOMContentLoaded', function() {
+  var button = document.querySelector('button');
+  var audio = document.getElementById('hover-sound');
+
+  button.addEventListener('mouseenter', function() {
+      audio.currentTime = 0; // Rewind to start
+      audio.play();
+  });
+
+  button.addEventListener('mouseleave', function() {
+      audio.pause();
+      audio.currentTime = 0; // Reset to start
+  });
+});
