@@ -1,16 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>Text i cirkel</title>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #circle {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      font-size: 20px;
+      font-family: sans-serif;
+    }
+
+    .char {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform-origin: 0 0;
+      white-space: pre;
+    }
+  </style>
 </head>
 <body>
-    <div class="wrapper">
-        <div class="orbit">
-          <span>Detta är roterande text!</span>
-        </div>
-      </div>
+  <div id="circle"></div>
+
+  <script>
+    const text = "Text runt en cirkel!";
+    const container = document.getElementById("circle");
+    const radius = 120;
+    const chars = text.split("");
+    const angleStep = 360 / chars.length;
+
+    chars.forEach((char, i) => {
+      const span = document.createElement("span");
+      span.className = "char";
+      const angle = i * angleStep;
+      span.style.transform = `
+        rotate(${angle}deg)
+        translate(${radius}px)
+        rotate(${0 - angle}deg)
+      `;
+      span.textContent = char;
+      container.appendChild(span);
+    });
+  </script>
 </body>
 </html>
